@@ -220,6 +220,112 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
         }
 
     }
-    
+     public Color[][] getBoard() {
+        return board;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            currentShape.rotateShape();
+        }
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            currentShape.setDeltaX(1);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            currentShape.setDeltaX(-1);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            currentShape.speedUp();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            currentShape.speedDown();
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    public void startGame() {
+        stopGame();
+        setNextShape();
+        setCurrentShape();
+        gameOver = false;
+        looper.start();
+
+    }
+
+    public void stopGame() {
+        score = 0;
+
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+                board[row][col] = null;
+            }
+        }
+        looper.stop();
+    }
+
+    class GameLooper implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            update();
+            repaint();
+        }
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        mouseX = e.getX();
+        mouseY = e.getY();
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        mouseX = e.getX();
+        mouseY = e.getY();
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if (e.getButton() == MouseEvent.BUTTON1) {
+            leftClick = true;
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        if (e.getButton() == MouseEvent.BUTTON1) {
+            leftClick = false;
+        }
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    public void addScore() {
+        score++;
+    }
+
 
 }
