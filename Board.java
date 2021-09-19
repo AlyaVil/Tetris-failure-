@@ -174,20 +174,20 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
             String gamePausedString = "GAME PAUSED";
             g.setColor(Color.WHITE);
             g.setFont(new Font("Georgia", Font.BOLD, 30));
-            g.drawString(gamePausedString, 35, WindowGame.HEIGHT / 2);
+            g.drawString(gamePausedString, 35, Game.HEIGHT / 2);
         }
         if (gameOver) {
             String gameOverString = "GAME OVER";
             g.setColor(Color.WHITE);
             g.setFont(new Font("Georgia", Font.BOLD, 30));
-            g.drawString(gameOverString, 50, WindowGame.HEIGHT / 2);
+            g.drawString(gameOverString, 50, Game.HEIGHT / 2);
         }
         g.setColor(Color.WHITE);
 
         g.setFont(new Font("Georgia", Font.BOLD, 20));
 
-        g.drawString("SCORE", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2);
-        g.drawString(score + "", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2 + 30);
+        g.drawString("SCORE", Game.WIDTH - 125, Game.HEIGHT / 2);
+        g.drawString(score + "", Game.WIDTH - 125, Game.HEIGHT / 2 + 30);
 
         g.setColor(Color.WHITE);
 
